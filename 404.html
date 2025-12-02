@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Plantão 360</title>
+  <script>
+    // Redirect to index.html with hash-based routing
+    // This handles all 404 errors and redirects to the SPA
+    var path = window.location.pathname.replace(/^\/plantao360-site/, '');
+    if (path && path !== '/') {
+      window.location.replace('/plantao360-site/index.html#' + path);
+    } else {
+      window.location.replace('/plantao360-site/index.html');
+    }
+  </script>
+</head>
+<body>
+</body>
+</html>
