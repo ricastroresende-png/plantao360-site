@@ -1,25 +1,8 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
-import { useHashLocation } from "wouter/use-hash-location";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./components/theme-provider";
 import Home from "./pages/Home";
-
-
-function Router() {
-  useHashLocation();
-  
-  return (
-    <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
-      <Route component={NotFound} />
-    </Switch>
-  );
-}
 
 // NOTE: About Theme
 // - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
@@ -32,7 +15,7 @@ function App() {
       <ThemeProvider defaultTheme="dark" storageKey="plantao360-theme">
         <TooltipProvider>
           <Toaster />
-          <Router />
+          <Home />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
