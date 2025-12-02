@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import MainLayout from "@/components/MainLayout";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Calendar, 
@@ -64,7 +63,7 @@ export default function Home() {
   };
 
   return (
-    <MainLayout>
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* Hero Section - Clinical Minimalism */}
       <section id="hero" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
         {/* Surgical Contrast Background */}
@@ -859,6 +858,6 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-    </MainLayout>
+    </div>
   );
 }
