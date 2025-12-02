@@ -73,7 +73,7 @@ export default function Home() {
           <div className="absolute bottom-0 right-0 w-[900px] h-[700px] bg-cyan-500/5 rounded-full blur-[120px] opacity-15"></div>
           
           {/* Subtle grid pattern */}
-          <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-5"></div>
+          <div className="absolute inset-0 bg-[url('./grid-pattern.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-5"></div>
           
           {/* Fine dividing lines */}
           <div className="absolute top-1/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
@@ -827,7 +827,7 @@ export default function Home() {
       {/* CTA Final Section */}
       <section className="py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-primary z-0">
-          <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10"></div>
+          <div className="absolute inset-0 bg-[url('./grid-pattern.svg')] opacity-10"></div>
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/10 rounded-full blur-[100px]"></div>
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-400/10 rounded-full blur-[80px]"></div>
         </div>
