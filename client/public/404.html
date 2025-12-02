@@ -5,25 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Plantão 360 - Site Oficial</title>
   <script>
-    // SPA redirect for GitHub Pages
-    // This script captures 404 errors and redirects to index.html
-    // preserving the original path for client-side routing
+    // GitHub Pages SPA routing fix
+    // Redirect any 404 to index.html while preserving the path
     
-    const path = decodeURIComponent(window.location.pathname);
-    const pathSegments = path.split('/').filter(Boolean);
+    const path = window.location.pathname;
+    const segments = path.split('/').filter(Boolean);
     
-    // Get the base path (repository name if applicable)
-    const baseSegments = pathSegments.slice(0, 1);
-    const routePath = '/' + pathSegments.slice(1).join('/');
-    
-    // Redirect to index.html with the original path as a query parameter
-    if (!path.endsWith('.html') && !path.endsWith('.js') && !path.endsWith('.css')) {
-      window.location.replace(
-        window.location.origin + 
-        (baseSegments.length > 0 ? '/' + baseSegments[0] : '') + 
-        '/index.html?redirect=' + 
-        encodeURIComponent(routePath || '/')
-      );
+    // If the last segment is not a file (no extension), redirect to index.html
+    if (!segments[segments.length - 1]?.includes('.')) {
+      // Store the original path for client-side routing
+      sessionStorage.setItem('redirect', path);
+      
+      // Redirect to index.html
+      window.location.replace(path.split('/').slice(0, -1).join('/') + '/index.html');
     }
   </script>
 </head>
