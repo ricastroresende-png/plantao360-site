@@ -11,14 +11,12 @@ import Home from "./pages/Home";
 
 function App() {
   return (
-    <ErrorBoundary>
-      <ThemeProvider defaultTheme="dark" storageKey="plantao360-theme">
-        <TooltipProvider>
-          <Toaster />
-          <Home />
-        </TooltipProvider>
-      </ThemeProvider>
-    </ErrorBoundary>
+    <ThemeProvider defaultTheme="dark" storageKey="plantao360-theme">
+      <TooltipProvider>
+        <Toaster />
+        <Home />
+      </TooltipProvider>
+    </ThemeProvider>
   );
 }
 
