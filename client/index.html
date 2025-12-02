@@ -14,6 +14,14 @@
 
   <body>
     <div id="root"></div>
+    <script>
+      // GitHub Pages SPA redirect fix
+      // If the page is accessed without a hash and it's a 404 redirect, add the hash
+      if (!window.location.hash && window.location.pathname.endsWith('/')) {
+        // This ensures that the hash-based routing works correctly
+        window.location.hash = '/';
+      }
+    </script>
     <script type="module" src="/src/main.tsx"></script>
     <script
       defer
