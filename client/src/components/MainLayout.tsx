@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "wouter";
 import { Menu, X, ChevronRight, Moon, Sun } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 import { Button } from "@/components/ui/button";
@@ -13,7 +12,6 @@ interface MainLayoutProps {
 export default function MainLayout({ children }: MainLayoutProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [location] = useLocation();
   const { theme, setTheme } = useTheme();
 
   useEffect(() => {
@@ -24,10 +22,14 @@ export default function MainLayout({ children }: MainLayoutProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu when route changes
+  // Close mobile menu when scrolling
   useEffect(() => {
-    setIsMobileMenuOpen(false);
-  }, [location]);
+    const handleScroll = () => {
+      if (isMobileMenuOpen) setIsMobileMenuOpen(false);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isMobileMenuOpen]);
 
   const navLinks = [
     { name: "Início", href: "#hero" },
@@ -57,8 +59,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
         )}
       >
         <div className="container flex items-center justify-between">
-          <Link href="/">
-            <a className="flex items-center gap-2 group" onClick={(e) => scrollToSection(e, "#hero")}>
+          <a href="#hero" className="flex items-center gap-2 group" onClick={(e) => scrollToSection(e, "#hero")}>
               <div className="relative w-8 h-8 flex items-center justify-center bg-primary rounded-lg overflow-hidden group-hover:scale-105 transition-transform">
                 <span className="text-white font-bold text-lg">P</span>
                 <div className="absolute inset-0 bg-gradient-to-tr from-black/20 to-transparent"></div>
@@ -66,8 +67,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
               <span className="font-bold text-xl tracking-tight">
                 Plantão<span className="text-primary">360</span>
               </span>
-            </a>
-          </Link>
+          </a>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
